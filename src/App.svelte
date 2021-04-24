@@ -1,10 +1,16 @@
 <script>
-	export let name;
+	let isActive = true;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Svelte Animation Project</h1>
+
+	<button on:click={() => (isActive = !isActive)}>
+		{#if isActive}Hide Box{:else}Show Box{/if}
+	</button>
+	{#if isActive}
+		<div class="box" />
+	{/if}
 </main>
 
 <style>
@@ -20,6 +26,14 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+	}
+
+	.box {
+		background: red;
+		display: block;
+		height: 100px;
+		margin: 0 auto;
+		width: 100px;
 	}
 
 	@media (min-width: 640px) {
